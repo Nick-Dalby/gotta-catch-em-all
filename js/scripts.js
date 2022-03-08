@@ -24,6 +24,8 @@ let pokemonList = [
   },
 ];
 
+// for loop cycles through the above array and writes to the DOM - added p and span tags for css styling
+
 for (let i = 0; i < pokemonList.length; i++) {
   if (pokemonList[i].height > 1.5) {
     document.write(
