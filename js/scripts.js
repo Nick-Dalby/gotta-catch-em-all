@@ -23,3 +23,24 @@ let pokemonList = [
     types: ["grass", "poison"],
   },
 ];
+
+for (let i = 0; i < pokemonList.length; i++) {
+  if (pokemonList[i].height > 1.5) {
+    document.write(
+      "<p>" +
+        pokemonList[i].name +
+        " is " +
+        pokemonList[i].height +
+        " meters tall." +
+        "<span> - Wow thats BIG!</span></p>"
+    );
+  } else {
+    document.write(
+      "<p>" +
+        pokemonList[i].name +
+        " is " +
+        pokemonList[i].height +
+        " meters tall.</p>"
+    );
+  }
+}
