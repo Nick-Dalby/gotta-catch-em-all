@@ -1,48 +1,67 @@
 let pokemonList = [
   {
-    name: "bulbasaur",
+    name: 'bulbasaur',
     height: 0.7,
-    types: ["grass", "poison"],
+    types: ['grass', 'poison'],
   },
 
   {
-    name: "jigglypuff",
+    name: 'jigglypuff',
     height: 0.5,
-    types: ["normal", "fairy"],
+    types: ['normal', 'fairy'],
   },
 
   {
-    name: "charizard",
+    name: 'charizard',
     height: 1.7,
-    types: ["fire", "flying"],
+    types: ['fire', 'flying'],
   },
 
   {
-    name: "oddish",
+    name: 'oddish',
     height: 0.5,
-    types: ["grass", "poison"],
+    types: ['grass', 'poison'],
   },
 ];
 
-// for loop cycles through the above array and writes to the DOM - added p and span tags for css styling
+// refactored code to use a forEach loop
+
+pokemonList.forEach((item) => {
+  if (item.height > 1.5) {
+    document.write(
+      '<p>' +
+        item.name +
+        ' is ' +
+        item.height +
+        ' meters tall' +
+        '<span> - Wow thats BIG!</span></p>'
+    );
+  } else {
+    document.write(
+      '<p>' + item.name + ' is ' + item.height + ' meters tall</p>'
+    );
+  }
+});
+
+/* for loop cycles through the above array and writes to the DOM - added p and span tags for css styling
 
 for (let i = 0; i < pokemonList.length; i++) {
   if (pokemonList[i].height > 1.5) {
     document.write(
-      "<p>" +
+      '<p>' +
         pokemonList[i].name +
-        " is " +
+        ' is ' +
         pokemonList[i].height +
-        " meters tall." +
-        "<span> - Wow thats BIG!</span></p>"
+        ' meters tall.' +
+        '<span> - Wow thats BIG!</span></p>'
     );
   } else {
     document.write(
-      "<p>" +
+      '<p>' +
         pokemonList[i].name +
-        " is " +
+        ' is ' +
         pokemonList[i].height +
-        " meters tall.</p>"
+        ' meters tall.</p>'
     );
   }
-}
+} */
