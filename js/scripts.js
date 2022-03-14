@@ -1,32 +1,47 @@
-let pokemonList = [
-  {
-    name: 'bulbasaur',
-    height: 0.7,
-    types: ['grass', 'poison'],
-  },
+// wrapped pokemonList inside IIFE
 
-  {
-    name: 'jigglypuff',
-    height: 0.5,
-    types: ['normal', 'fairy'],
-  },
+let pokemonRepository = (function () {
+  let pokemonList = [
+    {
+      name: 'bulbasaur',
+      height: 0.7,
+      types: ['grass', 'poison'],
+    },
 
-  {
-    name: 'charizard',
-    height: 1.7,
-    types: ['fire', 'flying'],
-  },
+    {
+      name: 'jigglypuff',
+      height: 0.5,
+      types: ['normal', 'fairy'],
+    },
 
-  {
-    name: 'oddish',
-    height: 0.5,
-    types: ['grass', 'poison'],
-  },
-];
+    {
+      name: 'charizard',
+      height: 1.7,
+      types: ['fire', 'flying'],
+    },
+
+    {
+      name: 'oddish',
+      height: 0.5,
+      types: ['grass', 'poison'],
+    },
+  ];
+
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+  function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll,
+  };
+})();
 
 // refactored code to use a forEach loop
-
-pokemonList.forEach((item) => {
+pokemonRepository.getAll().forEach((item) => {
   if (item.height > 1.5) {
     document.write(
       '<p>' +
@@ -42,26 +57,3 @@ pokemonList.forEach((item) => {
     );
   }
 });
-
-/* for loop cycles through the above array and writes to the DOM - added p and span tags for css styling
-
-for (let i = 0; i < pokemonList.length; i++) {
-  if (pokemonList[i].height > 1.5) {
-    document.write(
-      '<p>' +
-        pokemonList[i].name +
-        ' is ' +
-        pokemonList[i].height +
-        ' meters tall.' +
-        '<span> - Wow thats BIG!</span></p>'
-    );
-  } else {
-    document.write(
-      '<p>' +
-        pokemonList[i].name +
-        ' is ' +
-        pokemonList[i].height +
-        ' meters tall.</p>'
-    );
-  }
-} */
