@@ -57,3 +57,18 @@ pokemonRepository.getAll().forEach((item) => {
     );
   }
 });
+
+// using ternary operator in place of if else for the same result
+
+/* pokemonRepository.getAll().forEach((item) => {
+  document.write(
+    item.height > 1.5
+      ? '<p>' +
+          item.name +
+          ' is ' +
+          item.height +
+          ' meters tall' +
+          '<span> - Wow thats BIG!</span></p>'
+      : '<p>' + item.name + ' is ' + item.height + ' meters tall</p>'
+  );
+}); */
