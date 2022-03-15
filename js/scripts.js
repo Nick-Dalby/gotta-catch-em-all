@@ -26,49 +26,49 @@ let pokemonRepository = (function () {
       types: ['grass', 'poison'],
     },
   ];
-
+  // checks if incoming pokemon has certain object key values
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    if (
+      Object.keys(pokemon).includes('name') &&
+      Object.keys(pokemon).includes('height') &&
+      Object.keys(pokemon).includes('types')
+    ) {
+      return pokemonList.push(pokemon);
+    } else {
+      alert('incomplete data');
+    }
   }
   function getAll() {
     return pokemonList;
   }
 
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('button');
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+
+    button.addEventListener('click', function (event) {
+      showDetails(pokemon.name);
+    });
+  }
+
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+
   return {
     add: add,
     getAll: getAll,
+    addListItem: addListItem,
+    showDetails: showDetails,
   };
 })();
 
 // refactored code to use a forEach loop
-pokemonRepository.getAll().forEach((item) => {
-  if (item.height > 1.5) {
-    document.write(
-      '<p>' +
-        item.name +
-        ' is ' +
-        item.height +
-        ' meters tall' +
-        '<span> - Wow thats BIG!</span></p>'
-    );
-  } else {
-    document.write(
-      '<p>' + item.name + ' is ' + item.height + ' meters tall</p>'
-    );
-  }
+pokemonRepository.getAll().forEach((pokemon) => {
+  pokemonRepository.addListItem(pokemon);
 });
-
-// using ternary operator in place of if else for the same result
-
-/* pokemonRepository.getAll().forEach((item) => {
-  document.write(
-    item.height > 1.5
-      ? '<p>' +
-          item.name +
-          ' is ' +
-          item.height +
-          ' meters tall' +
-          '<span> - Wow thats BIG!</span></p>'
-      : '<p>' + item.name + ' is ' + item.height + ' meters tall</p>'
-  );
-}); */
